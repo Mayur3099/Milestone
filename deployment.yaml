@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ping-app
+  labels:
+    app: ping-app
+spec:
+  replicas: 1 
+  selector: 
+    matchLabels:
+      app: ping-app
+  template:
+    metadata:
+      labels:
+        app: ping-app
+    spec:
+      containers:
+      - name: ping-app
+        image: mayurpawar3099/ping-app
+        ports:
+        - containerPort: 5000
+        env:
+        - name: FLASK_ENV
+          value: "porduction"
+
+---
+
+apiVersion: v1
+kind: Service 
+metadata:
+  name: ping-app-service
+  labels:
+    app: ping-app
+spec:
+  selector:
+    app: ping-app
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer
