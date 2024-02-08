@@ -34,4 +34,19 @@ jobs:
         with:
           push: true
           tags: mayurpawar3099/ping-app-github:latest
-        
+
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+      - name: Try the cluster !
+        run: kubectl get pods -A
+    
+      - name: Deploy to minikube
+        run:
+          kubectl apply -f deployment.yaml
+      - name: Test service URLs
+        run: |
+          minikube service list
+          minikube service example --url
+          echo "------------------opening the service------------------"
+          curl $(minikube service example --http://localhost/ping)     
+          
