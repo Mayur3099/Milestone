@@ -46,7 +46,7 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
-          # minikube service example --url
+          minikube service example --url
           echo "------------------opening the service------------------"
-          curl $(minikube service example --http://localhost/ping)     
+          curl $(minikube service example --url)     
           
