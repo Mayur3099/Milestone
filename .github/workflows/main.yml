@@ -48,6 +48,9 @@ jobs:
           kubectl get services
           kubectl get deployments
           kubectl get pods
+
+          minikube service ping-app-service --url
+          
           # minikube service list
           # minikube service example --url
           # echo "------------------opening the service------------------"
