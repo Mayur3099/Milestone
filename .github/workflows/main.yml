@@ -43,6 +43,11 @@ jobs:
       - name: Deploy to minikube
         run:
           kubectl apply -f deployment.yaml
+
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+        shell: bash
+  
       - name: Test service URLs
         run: |
           kubectl get services
