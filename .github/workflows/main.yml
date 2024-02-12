@@ -54,7 +54,7 @@ jobs:
           kubectl get deployments
           kubectl get pods
 
-          minikube service ping-app-service --url
+          # minikube service ping-app-service --url
 
           curl $(minikube service ping-app-service --url)
           curl $(minikube service ping-app-service --url)/ping
