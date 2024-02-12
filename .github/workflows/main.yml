@@ -55,6 +55,10 @@ jobs:
           kubectl get pods
 
           minikube service ping-app-service --url
+
+          curl $(minikube service ping-app-service --url)
+          curl $(minikube service ping-app-service --url)/ping
+          curl $(minikube service ping-app-service --url)/healthz
           
           # minikube service list
           # minikube service example --url
