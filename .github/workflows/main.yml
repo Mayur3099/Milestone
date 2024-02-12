@@ -56,9 +56,15 @@ jobs:
 
           # minikube service ping-app-service --url
 
-          curl $(minikube service ping-app-service --url)
-          curl $(minikube service ping-app-service --url)/ping
-          curl $(minikube service ping-app-service --url)/healthz
+          url=$(minikube service ping-app-service --url)
+
+          # curl $(minikube service ping-app-service --url)
+          # curl $(minikube service ping-app-service --url)/ping
+          # curl $(minikube service ping-app-service --url)/healthz
+
+          curl $url
+          curl $url/ping
+          curl $url/healthz
           
           # minikube service list
           # minikube service example --url
