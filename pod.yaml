@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: ping-app
+  labels:
+    name: ping-app
+spec:
+  containers:
+    - name: ping-app
+      image: mayurpawar3099/ping-app
+      ports:
+      - containerPort: 5000
+      env:
+      - name: FLASK_ENV
+        value: "Production"
