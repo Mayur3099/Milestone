@@ -1,8 +1,10 @@
 from flask import Flask
+from prometheus_flask_exporter import PrometheusMetrics
 import psutil
 import platform
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 @app.route("/")
 def home():
@@ -29,4 +31,4 @@ def getDiskUsage():
     }, 200
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
